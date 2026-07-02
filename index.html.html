@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vio la Luz — Sesión de diagnóstico · Rafa Sin Filtros</title>
+
+<!-- Meta para compartir en redes / WhatsApp -->
+<meta property="og:title" content="Sabes qué hacer. Aun así, no lo haces.">
+<meta property="og:description" content="En 50 minutos de charla genuina desarmamos tu autosabotaje y sales con tu primer paso claro. Sesión de diagnóstico gratis.">
+<meta property="og:image" content="michi.png">
+<meta property="og:type" content="website">
+<meta name="description" content="Sesión de diagnóstico 1 a 1 gratis. Deja de vivir en parálisis por análisis y da tu primer paso real.">
+
+<!-- Favicon (el michi) -->
+<link rel="icon" href="michi.png" type="image/png">
+<link rel="apple-touch-icon" href="michi.png">
+
+<!-- Tipografía con carácter (si hay internet usa Playfair; si no, cae a serif del sistema) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ambar:#EF9F27;
+    --negro:#0a0a0a;
+    --blanco:#f5f2ec;
+    --gris:#9a938a;
+    --serif:"Playfair Display",Georgia,"Iowan Old Style","Palatino Linotype",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--negro);color:var(--blanco);font-family:var(--sans);
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .acento{color:var(--ambar)}
+
+  /* Reveal al hacer scroll */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:56px 24px 72px}
+  .michi{width:190px;max-width:52vw;filter:drop-shadow(0 0 46px rgba(239,159,39,.38));margin-bottom:6px;animation:flota 6s ease-in-out infinite}
+  @keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .marca{font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gris);margin-bottom:16px}
+  .sesion-tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ambar);border:1px solid rgba(239,159,39,.35);border-radius:100px;padding:8px 20px;margin-bottom:26px}
+  .sesion-tag::before,.sesion-tag::after{content:"✦";font-style:normal;font-size:.7em;opacity:.7}
+  h1{font-family:var(--serif);font-size:clamp(2.1rem,6vw,3.6rem);font-weight:700;line-height:1.12;letter-spacing:-.01em;max-width:16ch}
+  h1 .sub{display:block;font-family:var(--sans);font-size:.34em;font-weight:400;color:var(--gris);margin-top:24px;line-height:1.55;letter-spacing:0;max-width:52ch;margin-left:auto;margin-right:auto}
+  .cta{display:inline-block;background:var(--ambar);color:#111;font-weight:700;font-size:1.05rem;padding:18px 40px;border-radius:100px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+  .cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(239,159,39,.35)}
+  .hero .cta{margin-top:42px}
+  .nota{margin-top:16px;font-size:.85rem;color:var(--gris)}
+
+  section{padding:80px 0}
+  .linea-sep{width:56px;height:2px;background:var(--ambar);margin:0 auto 34px;opacity:.7}
+  h2{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.3rem);font-weight:600;letter-spacing:-.01em;margin-bottom:22px;text-align:center;line-height:1.25}
+  p.lead{font-size:1.15rem;color:#d8d2c8;text-align:center;max-width:60ch;margin:0 auto 14px}
+
+  /* CREDIBILIDAD */
+  .credi{background:linear-gradient(180deg,rgba(239,159,39,.06),transparent);border-top:1px solid rgba(239,159,39,.18);border-bottom:1px solid rgba(239,159,39,.18)}
+  .credi blockquote{font-family:var(--serif);font-size:clamp(1.3rem,3.2vw,1.85rem);font-weight:500;line-height:1.4;text-align:center;max-width:26ch;margin:0 auto}
+  .credi .firma{display:block;font-family:var(--sans);margin-top:26px;font-size:.9rem;font-weight:400;color:var(--gris)}
+
+  /* CARDS */
+  .cards{display:grid;gap:20px;margin-top:42px}
+  @media(min-width:680px){.cards{grid-template-columns:repeat(3,1fr)}}
+  .card{background:#131313;border:1px solid #232323;border-radius:18px;padding:30px 24px;text-align:center}
+  .card .num{color:var(--ambar);font-weight:700;font-size:.85rem;letter-spacing:.15em;margin-bottom:12px}
+  .card h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:8px}
+  .card p{font-size:.95rem;color:#b8b2a8}
+
+  /* PARA QUIÉN */
+  .quien{display:grid;gap:20px;margin-top:20px}
+  @media(min-width:680px){.quien{grid-template-columns:1fr 1fr}}
+  .col{background:#131313;border:1px solid #232323;border-radius:18px;padding:32px 28px}
+  .col.si{border-color:rgba(239,159,39,.3)}
+  .col h3{font-family:var(--serif);font-size:1.25rem;font-weight:600;margin-bottom:18px}
+  .col.si h3{color:var(--ambar)}
+  .col ul{list-style:none}
+  .col li{padding:9px 0 9px 30px;position:relative;color:#cfc9bf;font-size:.98rem;border-top:1px solid #1e1e1e}
+  .col li:first-child{border-top:none}
+  .col li::before{position:absolute;left:0;top:9px;font-weight:700}
+  .col.si li::before{content:"→";color:var(--ambar)}
+  .col.no li::before{content:"×";color:var(--gris)}
+
+  /* ENCUADRE */
+  .encuadre{text-align:center}
+  .encuadre .caja{background:#131313;border:1px solid rgba(239,159,39,.28);border-radius:20px;padding:44px 34px;max-width:60ch;margin:0 auto}
+  .encuadre .caja p{font-size:1.18rem;color:#e4ded4}
+  .encuadre .caja strong{color:var(--ambar)}
+
+  /* FAQ */
+  .faq{max-width:660px;margin:36px auto 0}
+  details{background:#111;border:1px solid #232323;border-radius:14px;margin-bottom:14px;overflow:hidden}
+  summary{cursor:pointer;padding:22px 24px;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--ambar);font-size:1.5rem;font-weight:400;transition:transform .25s ease}
+  details[open] summary::after{transform:rotate(45deg)}
+  details .resp{padding:0 24px 24px;color:#b8b2a8;font-size:.98rem}
+
+  /* CIERRE */
+  .cierre{text-align:center;padding-bottom:120px}
+
+  footer{border-top:1px solid #1c1c1c;padding:34px 0;text-align:center;color:var(--gris);font-size:.82rem}
+
+  /* BOTÓN FIJO */
+  .sticky{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);background:var(--ambar);color:#111;font-weight:700;font-size:.98rem;padding:15px 30px;border-radius:100px;text-decoration:none;box-shadow:0 12px 34px rgba(0,0,0,.5);transition:transform .35s cubic-bezier(.2,.8,.2,1);z-index:50}
+  .sticky.show{transform:translate(-50%,0)}
+  .sticky:hover{filter:brightness(1.05)}
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <img class="michi" src="michi.png" alt="Michi de Rafa Sin Filtros">
+    <div class="marca">Rafa Sin Filtros</div>
+    <div class="sesion-tag">Vio la Luz</div>
+    <h1>
+      Sabes qué hacer.<br>Aun así, <span class="acento">no lo haces.</span>
+      <span class="sub">En 50 minutos de charla genuina desarmamos tu autosabotaje y sales con tu primer paso claro. Sin más teoría. Sin fuerza de voluntad. Sin culpa.</span>
+    </h1>
+    <a href="#agendar" class="cta">Quiero mi sesión gratis</a>
+    <div class="nota">50 minutos · 1 a 1 · sin costo</div>
+  </header>
+
+  <!-- CREDIBILIDAD -->
+  <section class="credi">
+    <div class="wrap reveal">
+      <blockquote>
+        Vivo con una enfermedad incurable, tomo <span class="acento">52 pastillas al día</span> y no tengo pronóstico de vida. Y aun así construyo, acompaño y actúo todos los días.
+        <span class="firma">— Rafael Armendáriz · Síndrome de Bartter (1 caso entre 10.000)</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- PROMESA / QUÉ PASA -->
+  <section>
+    <div class="wrap reveal">
+      <div class="linea-sep"></div>
+      <h2>Evita pasar un mes más con la cabeza llena de teoría</h2>
+      <p class="lead">Esto no es un curso ni una técnica más. Es una conversación donde te reflejo lo que no puedes ver solo. Si yo, con todo lo que llevo encima, cruzo el umbral cada día, tú —que lo tienes casi todo para avanzar— también puedes.</p>
+      <div class="cards">
+        <div class="card"><div class="num">01</div><h3>Ponemos en palabras</h3><p>Eso que ni tú mismo logras nombrar, por fin toma forma.</p></div>
+        <div class="card"><div class="num">02</div><h3>Desarmamos el bloqueo</h3><p>Vemos de dónde viene tu autosabotaje y el bucle de culpa.</p></div>
+        <div class="card"><div class="num">03</div><h3>Tu Mapa de Acción</h3><p>Sales con los micro-pasos exactos para avanzar hoy mismo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUIÉN -->
+  <section>
+    <div class="wrap reveal">
+      <div class="linea-sep"></div>
+      <h2>¿Es esto para ti?</h2>
+      <div class="quien">
+        <div class="col si">
+          <h3>Sí, si…</h3>
+          <ul>
+            <li>Ya tienes el conocimiento —cursos, libros, comunidades— pero vives en parálisis por análisis.</li>
+            <li>Sabes qué hacer, pero lo pospones en micro-escapes (redes, "ordenar" en vez de actuar).</li>
+            <li>Eres una persona comprometida de verdad con tu progreso y dispuesta a hacerte responsable.</li>
+            <li>Quieres seguir adquiriendo nuevas habilidades y dar tu primer paso real, no más excusas.</li>
+          </ul>
+        </div>
+        <div class="col no">
+          <h3>No, si…</h3>
+          <ul>
+            <li>Vives principalmente desde la negatividad y la queja.</li>
+            <li>Eliges no hacerte responsable de lo que te pasa.</li>
+            <li>Quieres el camino fácil y que los resultados se den para mañana.</li>
+            <li>No valoras el tiempo ni un espacio 1 a 1.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENCUADRE -->
+  <section class="encuadre">
+    <div class="wrap reveal">
+      <div class="caja">
+        <p><strong>No te va a costar dinero:</strong> solo 50 minutos de honestidad. Si no sales con al menos un paso claro, no perdiste nada — pero te aseguro que vas a salir con algo que no tenías al entrar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap reveal">
+      <div class="linea-sep"></div>
+      <h2>Antes de escribirme</h2>
+      <div class="faq">
+        <details>
+          <summary>¿Qué pasa exactamente en la sesión?</summary>
+          <div class="resp">Una charla de 50 minutos, 1 a 1. Te hago preguntas, te reflejo lo que no ves solo, y juntos aislamos tu primer paso real. Sales con tu Mapa Personalizado de Acción: no teoría, sino qué hacer hoy.</div>
+        </details>
+        <details>
+          <summary>¿Y si no sé ni explicar lo que me pasa?</summary>
+          <div class="resp">Justo ahí empieza el trabajo. Parte de la sesión es ayudarte a poner en palabras eso que ni tú mismo entiendes todavía.</div>
+        </details>
+        <details>
+          <summary>Siento que mi caso es muy complejo o muy raro…</summary>
+          <div class="resp">Probablemente no lo es tanto como crees. El patrón —saber qué hacer y aun así no hacerlo— es mucho más común de lo que parece.</div>
+        </details>
+        <details>
+          <summary>¿Necesito tener algo resuelto antes de empezar?</summary>
+          <div class="resp">No. Se empieza desde donde estás, con lo que tienes. No necesitas estar "listo" ni cumplir requisitos.</div>
+        </details>
+        <details>
+          <summary>¿Y si estoy empezando desde cero?</summary>
+          <div class="resp">También es para ti. No necesitas tener un proyecto armado ni saber exactamente a dónde vas. Si tienes muchas ideas y no sabes por cuál empezar —o ni siquiera sabes cuál es tu primer paso— justo eso es lo que ordenamos juntos en la sesión.</div>
+        </details>
+        <details>
+          <summary>¿Esto no será humo espiritual?</summary>
+          <div class="resp">Es espiritualidad aplicada a tu vida real, sin misticismo vacío ni promesas mágicas. Hablamos de acción concreta y de dejar de pelear contigo mismo.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="cierre" id="agendar">
+    <div class="wrap reveal">
+      <div class="linea-sep"></div>
+      <h2>Da el primer paso real</h2>
+      <p class="lead">Si Rafa pudo con todo y su enfermedad… tú, ¿por qué no? Agenda tu sesión de diagnóstico. Sin costo, por ahora.</p>
+      <a href="https://wa.me/51958496938?text=Hola%20Rafa%20%F0%9F%91%8B%20Vi%20tu%20p%C3%A1gina%20y%20quiero%20mi%20sesi%C3%B3n%20de%20diagn%C3%B3stico.%20S%C3%A9%20lo%20que%20tengo%20que%20hacer%20pero%20no%20lo%20estoy%20haciendo%2C%20y%20quiero%20dar%20mi%20primer%20paso%20real." class="cta">Agendar mi sesión gratis</a>
+      <div class="nota">Cupos limitados a mi energía · te respondo personalmente</div>
+    </div>
+  </section>
+
+  <footer>Rafa Sin Filtros · Espiritualidad práctica, sin humo · Esperanza · Resiliencia</footer>
+
+  <!-- BOTÓN FIJO -->
+  <a href="https://wa.me/51958496938?text=Hola%20Rafa%20%F0%9F%91%8B%20Vi%20tu%20p%C3%A1gina%20y%20quiero%20mi%20sesi%C3%B3n%20de%20diagn%C3%B3stico.%20S%C3%A9%20lo%20que%20tengo%20que%20hacer%20pero%20no%20lo%20estoy%20haciendo%2C%20y%20quiero%20dar%20mi%20primer%20paso%20real." class="sticky" id="sticky">Agendar gratis →</a>
+
+<script>
+  // Micro-animaciones al hacer scroll
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}});
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Botón fijo: aparece al pasar el hero y se oculta al llegar al CTA final
+  const sticky=document.getElementById('sticky');
+  const cierre=document.getElementById('agendar');
+  window.addEventListener('scroll',()=>{
+    const pasoHero = window.scrollY > window.innerHeight*0.9;
+    const cierreVisible = cierre.getBoundingClientRect().top < window.innerHeight*0.85;
+    if(pasoHero && !cierreVisible){sticky.classList.add('show')}
+    else{sticky.classList.remove('show')}
+  });
+</script>
+
+</body>
+</html>
